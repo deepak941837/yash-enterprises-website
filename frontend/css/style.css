@@ -56,10 +56,11 @@ body {
 
 /* Right Image */
 .hero-image img {
-    width: 400px;
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
     border-radius: 50%;
 }
-
 @media (max-width: 768px) {
     .hero {
         flex-direction: column;
