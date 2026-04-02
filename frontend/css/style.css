@@ -35,3 +35,8 @@ body {
 .nav-links a:hover {
     color: orange;
 }
+/* Active menu */
+.nav-links a.active {
+    color: orange;
+    font-weight: bold;
+}
