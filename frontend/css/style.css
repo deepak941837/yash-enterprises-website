@@ -54,17 +54,17 @@ body {
 
 /* Icon Buttons */
 .floating-contact a {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     background: #0f2027;
-    color: #ffffff;;
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     text-decoration: none;
-    font-size: 18px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-size: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
 }
 
