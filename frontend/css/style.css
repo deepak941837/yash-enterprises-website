@@ -56,8 +56,8 @@ body {
 .floating-contact a {
     width: 45px;
     height: 45px;
-    background: #ffffff;
-    color: #0f2027;
+    background: #0f2027;
+    color: #ffffff;;
     display: flex;
     align-items: center;
     justify-content: center;
