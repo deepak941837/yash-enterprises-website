@@ -40,3 +40,59 @@ body {
     color: orange;
     font-weight: bold;
 }
+
+/* Floating Contact Bar */
+.floating-contact {
+    position: fixed;
+    top: 35%;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 1000;
+}
+
+/* Icon Buttons */
+.floating-contact a {
+    width: 45px;
+    height: 45px;
+    background: #ffffff;
+    color: #0f2027;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.floating-contact a:hover {
+    transform: scale(1.1);
+    color: #fff;
+}
+
+/* Individual Brand Colors */
+.floating-contact a:nth-child(1):hover { background: #17a2b8; } /* About */
+.floating-contact a:nth-child(2):hover { background: #ff9800; } /* Services */
+.floating-contact a:nth-child(3):hover { background: #1877f2; } /* Facebook */
+.floating-contact a:nth-child(4):hover { background: #0077b5; } /* LinkedIn */
+.floating-contact a:nth-child(5):hover { background: #000000; } /* Twitter/X */
+.floating-contact a:nth-child(6):hover { background: #ff0000; } /* YouTube */
+.floating-contact a:nth-child(7):hover { background: #6c757d; } /* Email */
+.floating-contact a:nth-child(8):hover { background: #28a745; } /* Phone */
+
+@media (max-width: 768px) {
+    .floating-contact {
+        right: 10px;
+        top: 50%;
+    }
+
+    .floating-contact a {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
