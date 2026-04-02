@@ -10,19 +10,18 @@ body {
     justify-content: space-between;
     align-items: center;
     background: #0f2027;
-    padding: 15px 30px;
+    padding: 15px 40px;
 }
 
 .logo {
     color: white;
-    font-size: 22px;
     margin: 0;
 }
 
 .nav-links {
-    list-style: none;   /* removes bullets */
+    list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 25px;
     margin: 0;
     padding: 0;
 }
@@ -35,21 +34,4 @@ body {
 
 .nav-links a:hover {
     color: orange;
-}
-
-/* Hero */
-header {
-    text-align: center;
-    padding: 100px 20px;
-    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-    color: white;
-}
-
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: orange;
-    color: white;
-    border: none;
-    cursor: pointer;
 }
