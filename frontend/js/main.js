@@ -13,3 +13,10 @@ fetch("./components/navbar.html")
       }
     });
   });
+
+  // Load Footer
+fetch("components/footer.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("footer").innerHTML = data;
+  });
