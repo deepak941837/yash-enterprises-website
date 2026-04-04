@@ -200,9 +200,10 @@ body {
 /* MOBILE FLOATING FIX */
 @media (max-width: 768px) {
     .floating-contact {
-        top: auto;
-        bottom: 20px;
+        position: fixed;
+        bottom: 80px; /* 👈 push above footer */
         right: 10px;
+        top: auto;
     }
 
     .floating-contact a {
