@@ -1,3 +1,4 @@
+// Load Navbar
 fetch("./components/navbar.html")
   .then(res => res.text())
   .then(data => {
@@ -8,14 +9,25 @@ fetch("./components/navbar.html")
     const currentPage = window.location.pathname;
 
     links.forEach(link => {
-      if (link.getAttribute("href") === currentPage) {
+      if (currentPage.includes(link.getAttribute("href"))) {
         link.classList.add("active");
       }
     });
+
+    // ✅ MOBILE MENU FIX (IMPORTANT)
+    const toggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    if (toggle && navLinks) {
+      toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    }
   });
 
-  // Load Footer
-fetch("components/footer.html")
+
+// Load Footer
+fetch("./components/footer.html")
   .then(res => res.text())
   .then(data => {
     document.getElementById("footer").innerHTML = data;

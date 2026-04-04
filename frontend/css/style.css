@@ -78,13 +78,13 @@ body {
     }
 }
 
-/* Navbar */
+/* Navbar Base */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: #0f2027;
-    padding: 15px 40px;
+    padding: 15px 30px;
 }
 
 .logo {
@@ -92,27 +92,65 @@ body {
     margin: 0;
 }
 
+/* Navbar Base */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0f2027;
+    padding: 15px 30px;
+}
+
+.logo {
+    color: white;
+}
+
+/* Links */
 .nav-links {
     list-style: none;
     display: flex;
     gap: 25px;
-    margin: 0;
-    padding: 0;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-size: 16px;
 }
 
-.nav-links a:hover {
-    color: orange;
+/* Hamburger */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
 }
-/* Active menu */
-.nav-links a.active {
-    color: orange;
-    font-weight: bold;
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #0f2027;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 20px 0;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
 }
 
 /* Floating Contact Bar */
