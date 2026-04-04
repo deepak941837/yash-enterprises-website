@@ -209,75 +209,55 @@ body {
     }
 }
 
-.footer {
-    background: #7fa8a8;
-    padding: 50px 30px 20px;
-    color: #111;
-}
+/* MOBILE FOOTER FIX */
+@media (max-width: 768px) {
 
-/* TOP SECTION */
-.footer-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-}
+    .footer-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+    }
 
-/* SHAPES LEFT */
-.footer-shapes {
-    display: grid;
-    grid-template-columns: repeat(3, 20px);
-    gap: 15px;
-}
+    /* Hide shapes (they break mobile layout) */
+    .footer-shapes {
+        display: none;
+    }
 
-.footer-shapes div {
-    width: 20px;
-    height: 20px;
-    background: #111;
-    transform: rotate(45deg);
-}
+    /* Logo spacing */
+    .footer-logo {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
 
-/* CENTER CONTENT */
-.footer-content {
-    flex: 1;
-    text-align: center;
-}
+    /* Stack columns */
+    .footer-columns {
+        flex-direction: column;
+        gap: 25px;
+    }
 
-.footer-logo {
-    font-size: 32px;
-    margin-bottom: 30px;
-}
+    .footer-columns div {
+        width: 100%;
+    }
 
-/* COLUMNS */
-.footer-columns {
-    display: flex;
-    justify-content: center;
-    gap: 80px;
-}
+    /* Links */
+    .footer-columns a {
+        display: block;
+        margin: 6px 0;
+    }
 
-.footer-columns h3 {
-    margin-bottom: 10px;
-}
+    /* Bottom section */
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
 
-.footer-columns p {
-    margin: 5px 0;
-    cursor: pointer;
+    /* Back to top button */
+    .back-to-top {
+        margin-top: 10px;
+    }
 }
-
-.footer-columns p:hover {
-    text-decoration: underline;
-}
-
-/* BOTTOM */
-.footer-bottom {
-    border-top: 1px solid #333;
-    margin-top: 40px;
-    padding-top: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 /* BACK TO TOP */
 .back-to-top {
     text-decoration: none;
