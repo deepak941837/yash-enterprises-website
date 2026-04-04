@@ -277,7 +277,7 @@ body {
 
 .footer-content {
     margin-left: auto; /* 👈 pushes content to right */
-    text-align: left;
+    text-align: right;
 }
 
 .footer-logo {
@@ -289,8 +289,12 @@ body {
 .footer-columns {
     display: flex;
     gap: 60px;
+    justify-content: flex-end;
 }
-
+/* Each column text right */
+.footer-columns div {
+    text-align: right;
+}
 .footer-columns h3 {
     margin-bottom: 10px;
 }
