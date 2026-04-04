@@ -170,14 +170,16 @@ body {
 /* ================= FLOATING CONTACT ================= */
 .floating-contact {
     position: fixed;
-    top: 35%;
-    right: 15px;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     gap: 12px;
     z-index: 1000;
 }
 
+/* ICON STYLE */
 .floating-contact a {
     width: 50px;
     height: 50px;
@@ -190,20 +192,25 @@ body {
     text-decoration: none;
     font-size: 20px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
+/* HOVER EFFECT */
 .floating-contact a:hover {
+    background: #6fa3a3;
     transform: scale(1.1);
 }
 
-/* MOBILE FLOATING FIX */
+
+/* ================= MOBILE RESPONSIVE ================= */
 @media (max-width: 768px) {
+
     .floating-contact {
-        position: fixed;
-        bottom: 80px; /* 👈 push above footer */
-        right: 10px;
         top: auto;
+        bottom: 80px;   /* stays above footer */
+        right: 12px;
+        transform: none;
+        gap: 10px;
     }
 
     .floating-contact a {
@@ -365,6 +372,118 @@ body {
 
     .footer-bottom {
         flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ================= GLOBAL ================= */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+
+/* ================= ABOUT HERO ================= */
+.about-hero {
+    background: linear-gradient(rgba(111,163,163,0.95), rgba(111,163,163,0.95));
+    color: #fff;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.about-hero h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.about-hero p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+
+/* ================= ABOUT CONTENT ================= */
+.about-content {
+    padding: 60px 20px;
+    background: #ffffff;
+}
+
+.about-content h2 {
+    margin-top: 30px;
+    color: #333;
+    border-left: 5px solid #6fa3a3;
+    padding-left: 10px;
+}
+
+.about-content p {
+    margin-top: 10px;
+    line-height: 1.7;
+    color: #555;
+}
+
+
+/* ================= ABOUT LINKS ================= */
+.about-links {
+    background: #f4f7f7;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.about-links h2 {
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.links-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.link-card {
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.link-card:hover {
+    background: #6fa3a3;
+    color: #fff;
+    transform: translateY(-5px);
+}
+
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+    .about-hero h1 {
+        font-size: 28px;
+    }
+
+    .about-hero p {
+        font-size: 16px;
+    }
+
+    .links-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .link-card {
+        width: 80%;
         text-align: center;
     }
 }
