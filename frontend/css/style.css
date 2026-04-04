@@ -275,6 +275,11 @@ body {
     align-items: center;
 }
 
+.footer-content {
+    margin-left: auto; /* 👈 pushes content to right */
+    text-align: left;
+}
+
 .footer-logo {
     text-align: center;
     font-size: 28px;
