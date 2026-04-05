@@ -1,0 +1,53 @@
+.quotation-page {
+  padding: 60px 20px;
+}
+
+.quotation-page h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+form {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+input, select, textarea {
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  background: #0a2e36;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  form {
+    padding: 10px;
+  }
+}

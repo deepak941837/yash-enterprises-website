@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CCTV Quotation | Yash Enterprises</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/quotation.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<div id="navbar"></div>
+
+<section class="quotation-page">
+  <div class="container">
+
+    <h1>Get CCTV Installation Quote</h1>
+
+    <form id="quotationForm">
+
+      <!-- Service Type -->
+      <label>Service Type</label>
+      <select name="serviceType" required>
+        <option value="">Select</option>
+        <option>New Installation</option>
+        <option>Repair / Service</option>
+        <option>AMC</option>
+        <option>Relocation</option>
+      </select>
+
+      <!-- Location -->
+      <label>Location Type</label>
+      <select name="location">
+        <option>Home</option>
+        <option>Shop</option>
+        <option>Office</option>
+        <option>Warehouse</option>
+      </select>
+
+      <!-- Cameras -->
+      <label>Number of Cameras</label>
+      <select name="cameras">
+        <option>2-4</option>
+        <option>4-8</option>
+        <option>8-16</option>
+        <option>Not Sure</option>
+      </select>
+
+      <!-- Coverage -->
+      <label>Coverage Type</label>
+      <select name="coverage">
+        <option>Indoor</option>
+        <option>Outdoor</option>
+        <option>Both</option>
+      </select>
+
+      <!-- Features -->
+      <label>Features Needed</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="features[]" value="Mobile Viewing"> Mobile Viewing</label>
+        <label><input type="checkbox" name="features[]" value="Night Vision"> Night Vision</label>
+        <label><input type="checkbox" name="features[]" value="Audio"> Audio</label>
+      </div>
+
+      <!-- Description -->
+      <label>Describe Requirement</label>
+      <textarea name="description" required></textarea>
+
+      <!-- Contact -->
+      <label>Name</label>
+      <input type="text" name="name" required>
+
+      <label>Phone</label>
+      <input type="text" name="phone" required>
+
+      <button type="submit">Submit Request</button>
+
+    </form>
+
+  </div>
+</section>
+
+ <!-- Floating -->
+  <div id="floating"></div>
+
+<div id="footer"></div>
+
+<script src="../js/main.js"></script>
+<script src="../js/quotation.js"></script>
+
+</body>
+</html>
