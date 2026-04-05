@@ -1,0 +1,81 @@
+/* ================= COMMERCE HERO ================= */
+.commerce-hero {
+    background: linear-gradient(rgba(15,32,39,0.9), rgba(44,83,100,0.9));
+    color: #fff;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+/* ================= COMMERCE SECTION ================= */
+.commerce-section {
+    padding: 60px 20px;
+    background: #f4f7f7;
+}
+
+/* GRID */
+.commerce-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+/* CARD */
+.commerce-card {
+    background: #fff;
+    padding: 40px 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.commerce-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.commerce-card i {
+    font-size: 40px;
+    color: #0f2027;
+    margin-bottom: 15px;
+}
+
+/* PRIORITY CARD */
+.highlight {
+    border: 2px solid #6fa3a3;
+}
+
+/* BUTTON */
+.commerce-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #0f2027;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.commerce-btn:hover {
+    background: #6fa3a3;
+}
+
+/* SECONDARY BUTTON */
+.secondary-btn {
+    background: transparent;
+    border: 2px solid #0f2027;
+    color: #0f2027;
+}
+
+.secondary-btn:hover {
+    background: #0f2027;
+    color: #fff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .commerce-grid {
+        grid-template-columns: 1fr;
+    }
+}
