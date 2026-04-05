@@ -1,0 +1,76 @@
+/* ================= CONTACT HERO ================= */
+.contact-hero {
+    background: linear-gradient(rgba(15,32,39,0.9), rgba(44,83,100,0.9));
+    color: #fff;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+/* ================= CONTACT SECTION ================= */
+.contact-section {
+    padding: 60px 20px;
+    background: #f4f7f7;
+}
+
+/* GRID */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+/* INFO */
+.contact-info h2 {
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.contact-info i {
+    margin-right: 10px;
+    color: #0f2027;
+}
+
+/* FORM */
+.contact-form h2 {
+    margin-bottom: 20px;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.contact-form button {
+    padding: 12px;
+    border: none;
+    background: #0f2027;
+    color: #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    background: #6fa3a3;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
