@@ -5,17 +5,27 @@ const basePath = isInPages ? "../" : "./";
 
 // ================= LOAD COMPONENT FUNCTION =================
 function loadComponent(id, file) {
+  const element = document.getElementById(id);
+
+  // Debug: check if element exists
+  if (!element) {
+    console.warn(`Element #${id} not found in HTML`);
+    return;
+  }
+
   fetch(basePath + file)
     .then(res => {
       if (!res.ok) {
-        throw new Error("Component not found: " + file);
+        throw new Error(`Component not found: ${basePath + file}`);
       }
       return res.text();
     })
     .then(data => {
-      document.getElementById(id).innerHTML = data;
+      element.innerHTML = data;
 
-      // Run extra logic after navbar loads
+      console.log(`Loaded: ${id}`); // ✅ debug log
+
+      // Run navbar logic after loading
       if (id === "navbar") {
         setupNavbar();
       }
@@ -27,14 +37,18 @@ function loadComponent(id, file) {
 // ================= NAVBAR LOGIC =================
 function setupNavbar() {
 
-  // Active link highlight
   const links = document.querySelectorAll(".nav-links a");
-  const currentPage = window.location.pathname;
+  const currentPage = window.location.pathname.split("/").pop();
 
   links.forEach(link => {
-    const href = link.getAttribute("href");
+    let href = link.getAttribute("href");
 
-    if (currentPage.includes(href.replace("../", ""))) {
+    if (!href) return;
+
+    // Normalize path
+    href = href.replace("../", "");
+
+    if (currentPage === href) {
       link.classList.add("active");
     }
   });
@@ -52,6 +66,12 @@ function setupNavbar() {
 
 
 // ================= LOAD ALL COMPONENTS =================
-loadComponent("navbar", "components/navbar.html");
-loadComponent("footer", "components/footer.html");
-loadComponent("floating-contact", "components/floating-contact.html");
+document.addEventListener("DOMContentLoaded", () => {
+
+  console.log("Main.js Loaded ✅");
+
+  loadComponent("navbar", "components/navbar.html");
+  loadComponent("footer", "components/footer.html");
+  loadComponent("floating", "components/floating-contact.html");
+
+});

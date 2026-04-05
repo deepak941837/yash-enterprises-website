@@ -1,0 +1,55 @@
+/* Page wrapper */
+.explore-services-page {
+  padding: 60px 20px;
+}
+
+/* Title */
+.page-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+/* Subtitle */
+.page-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+/* Grid layout */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+/* Service card */
+.service-card {
+  display: block;
+  padding: 25px;
+  border-radius: 12px;
+  text-decoration: none;
+  background: #f9f9f9;
+  color: #000;
+  transition: all 0.3s ease;
+  border: 1px solid #eee;
+}
+
+/* Hover effect */
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* Heading */
+.service-card h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+/* Description */
+.service-card p {
+  font-size: 14px;
+  color: #555;
+}
