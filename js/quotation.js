@@ -31,9 +31,56 @@ document.getElementById("quotationForm").addEventListener("submit", function(e) 
 📝 Details:
 ${description}`;
 
-  const whatsappNumber = "917783097357"; // 👈 your number
+  const whatsappNumber = "919308907319"; // 👈 your number
 
   const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   window.open(url, "_blank");
 });
+
+const params = new URLSearchParams(window.location.search);
+const service = params.get("service");
+
+console.log(service); // test
+
+// Change title dynamically
+const title = document.querySelector("h1");
+
+if (service === "cctv") {
+  title.innerText = "Get CCTV Installation Quote";
+} 
+else if (service === "biometric") {
+  title.innerText = "Get Biometric System Quote";
+}
+else if (service === "fire") {
+  title.innerText = "Get Fire Safety Quote";
+}
+else if (service === "network") {
+  title.innerText = "Get Network Service Quote";
+}
+else if (service === "computer") {
+  title.innerText = "Get Computer Service Quote";
+}
+else if (service === "maintenance") {
+  title.innerText = "Get Website & App Maintenance Quote";
+}
+
+const cctv = document.getElementById("cctvFields");
+const biometric = document.getElementById("biometricFields");
+const fire = document.getElementById("fireFields");
+const network = document.getElementById("networkFields");
+const computer = document.getElementById("computerFields");
+const maintenance = document.getElementById("maintenanceFields");
+
+// Hide all first
+[cctv, biometric, fire, network, computer, maintenance].forEach(el => {
+  el.style.display = "none";
+});
+
+// Show based on service
+if (service === "cctv") cctv.style.display = "block";
+else if (service === "biometric") biometric.style.display = "block";
+else if (service === "fire") fire.style.display = "block";
+else if (service === "network") network.style.display = "block";
+else if (service === "computer") computer.style.display = "block";
+else if (service === "maintenance") maintenance.style.display = "block";

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/quotation.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
 </head>
 
 <body>
@@ -17,68 +18,215 @@
 <section class="quotation-page">
   <div class="container">
 
-    <h1>Get CCTV Installation Quote</h1>
+    <h1 id="pageTitle">Get Quote</h1>
 
-    <form id="quotationForm">
+  <p class="subtitle">Fill details to get accurate quotation instantly</p>
+  
+  
+    <form id="quotationForm" class="form-layout">
 
-      <!-- Service Type -->
-      <label>Service Type</label>
-      <select name="serviceType" required>
-        <option value="">Select</option>
-        <option>New Installation</option>
-        <option>Repair / Service</option>
-        <option>AMC</option>
-        <option>Relocation</option>
-      </select>
+  <!-- LEFT SIDE (SERVICE FIELDS) -->
+  <div class="form-left">
 
-      <!-- Location -->
-      <label>Location Type</label>
-      <select name="location">
-        <option>Home</option>
-        <option>Shop</option>
-        <option>Office</option>
-        <option>Warehouse</option>
-      </select>
+    <!-- CCTV -->
+    <div id="cctvFields" class="form-section">
 
-      <!-- Cameras -->
-      <label>Number of Cameras</label>
-      <select name="cameras">
-        <option>2-4</option>
-        <option>4-8</option>
-        <option>8-16</option>
-        <option>Not Sure</option>
-      </select>
-
-      <!-- Coverage -->
-      <label>Coverage Type</label>
-      <select name="coverage">
-        <option>Indoor</option>
-        <option>Outdoor</option>
-        <option>Both</option>
-      </select>
-
-      <!-- Features -->
-      <label>Features Needed</label>
-      <div class="checkbox-group">
-        <label><input type="checkbox" name="features[]" value="Mobile Viewing"> Mobile Viewing</label>
-        <label><input type="checkbox" name="features[]" value="Night Vision"> Night Vision</label>
-        <label><input type="checkbox" name="features[]" value="Audio"> Audio</label>
+      <div class="form-group">
+    <label><i class="fa-solid fa-gear"></i> Service Type</label>
+        <select name="serviceType">
+          <option>New Installation</option>
+          <option>Repair / Service</option>
+          <option>AMC</option>
+          <option>Relocation</option>
+        </select>
       </div>
 
-      <!-- Description -->
-      <label>Describe Requirement</label>
-      <textarea name="description" required></textarea>
+      <div class="form-group">
+       <label><i class="fa-solid fa-location-dot"></i> Location Type</label>
+        <select name="location">
+          <option>Home</option>
+          <option>Shop</option>
+          <option>Office</option>
+          <option>Warehouse</option>
+        </select>
+      </div>
 
-      <!-- Contact -->
-      <label>Name</label>
-      <input type="text" name="name" required>
+      <div class="form-group">
+      <label><i class="fa-solid fa-video"></i> Number of Cameras</label>
+        <select name="cameras">
+          <option>2-4</option>
+          <option>4-8</option>
+          <option>8-16</option>
+          <option>Not Sure</option>
+        </select>
+      </div>
 
-      <label>Phone</label>
-      <input type="text" name="phone" required>
+      <div class="form-group">
+    <label><i class="fa-solid fa-expand"></i> Coverage Type</label>
+        <select name="coverage">
+          <option>Indoor</option>
+          <option>Outdoor</option>
+          <option>Both</option>
+        </select>
+      </div>
 
-      <button type="submit">Submit Request</button>
+      <div class="form-group">
+<label><i class="fa-solid fa-star"></i> Features Needed</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" value="Mobile Viewing"> Mobile Viewing</label>
+          <label><input type="checkbox" value="Night Vision"> Night Vision</label>
+          <label><input type="checkbox" value="Audio"> Audio</label>
+        </div>
+      </div>
 
-    </form>
+    </div>
+
+    <!-- BIOMETRIC -->
+    <div id="biometricFields" class="form-section" style="display:none;">
+
+      <div class="form-group">
+        <label>Device Type</label>
+        <select>
+          <option>Fingerprint</option>
+          <option>Face Recognition</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Number of Employees</label>
+        <input type="number">
+      </div>
+
+    </div>
+
+    <!-- FIRE -->
+    <div id="fireFields" class="form-section" style="display:none;">
+
+      <div class="form-group">
+        <label>Service Type</label>
+        <select>
+          <option>New Installation</option>
+          <option>Refilling</option>
+          <option>Inspection</option>
+          <option>AMC</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Property Type</label>
+        <select>
+          <option>Home</option>
+          <option>Office</option>
+          <option>Factory</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Number of Units</label>
+        <input type="number">
+      </div>
+
+    </div>
+
+    <!-- NETWORK -->
+    <div id="networkFields" class="form-section" style="display:none;">
+
+      <div class="form-group">
+        <label>Service Type</label>
+        <select>
+          <option>New Setup</option>
+          <option>Troubleshooting</option>
+          <option>Upgrade</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Network Type</label>
+        <select>
+          <option>LAN</option>
+          <option>WiFi</option>
+          <option>Both</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Number of Devices</label>
+        <input type="number">
+      </div>
+
+    </div>
+
+    <!-- COMPUTER -->
+    <div id="computerFields" class="form-section" style="display:none;">
+
+      <div class="form-group">
+        <label>Device Type</label>
+        <select>
+          <option>Laptop</option>
+          <option>Desktop</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Issue Type</label>
+        <select>
+          <option>Hardware</option>
+          <option>Software</option>
+          <option>Upgrade</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- MAINTENANCE -->
+    <div id="maintenanceFields" class="form-section" style="display:none;">
+
+      <div class="form-group">
+        <label>Service Type</label>
+        <select>
+          <option>Website Update</option>
+          <option>Bug Fixing</option>
+          <option>App Maintenance</option>
+          <option>Hosting Support</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Platform</label>
+        <select>
+          <option>Website</option>
+          <option>Mobile App</option>
+          <option>Both</option>
+        </select>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- RIGHT SIDE (COMMON FIELDS) -->
+  <div class="form-right">
+
+    <div class="form-group">
+<label><i class="fa-solid fa-pen"></i> Describe Requirement</label>
+      <textarea name="description"></textarea>
+    </div>
+
+    <div class="form-group">
+  <label><i class="fa-solid fa-user"></i> Name</label>
+      <input type="text" name="name">
+    </div>
+
+    <div class="form-group">
+   <label><i class="fa-solid fa-phone"></i> Phone</label>
+      <input type="text" name="phone">
+    </div>
+
+    <button type="submit">Get Quote on WhatsApp</button>
+
+  </div>
+
+</form>
 
   </div>
 </section>
