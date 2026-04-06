@@ -1,0 +1,133 @@
+.sales-hero {
+  padding: 80px 20px;
+  text-align: center;
+  background: #111;
+  color: #fff;
+}
+
+.sales-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 25px;
+  flex-wrap: wrap;
+}
+
+.sales-links a {
+  padding: 10px 15px;
+  background: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.sales-section {
+  padding: 60px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.sales-section h2 {
+  margin-bottom: 10px;
+}
+
+.sales-section ul {
+  margin-top: 10px;
+}
+
+.sales-cta {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f4f4f4;
+}
+
+.sales-cta .btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* MAIN SECTION */
+.services-main {
+  padding: 60px 20px;
+  background: #f4f7f7;
+  text-align: center;
+}
+
+/* TITLE */
+.main-title {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+/* GRID */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+/* CARD */
+.main-card {
+  background: #fff;
+  padding: 40px 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+}
+
+/* HOVER EFFECT 🔥 */
+.main-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+/* ICON (optional if using font awesome) */
+.main-card i {
+  font-size: 40px;
+  color: #0f2027;
+  margin-bottom: 15px;
+}
+
+/* TITLE */
+.main-card h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #0f2027;
+}
+
+/* TEXT */
+.main-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+//* BUTTON */
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #0f2027;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+/* BUTTON HOVER 🔥 */
+.btn:hover {
+  background: #6fa3a3;
+}
+* OPTIONAL HIGHLIGHT CARD */
+.highlight {
+  border: 2px solid #6fa3a3;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
