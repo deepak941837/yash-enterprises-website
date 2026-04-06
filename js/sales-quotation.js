@@ -1,5 +1,5 @@
 // ===============================
-// SALES QUOTATION SCRIPT (UPDATED)
+// SALES QUOTATION SCRIPT (FINAL)
 // ===============================
 
 // ✅ GET PRODUCT FROM URL
@@ -130,7 +130,52 @@ function sendToWhatsApp() {
 }
 
 // ===============================
-// TITLE UPDATE (🔥 FIXED HERE)
+// SEND EMAIL (🔥 FIXED)
+// ===============================
+function sendEmail() {
+
+  console.log("Email button clicked 🔥");
+
+  const product = getProductType();
+  const data = getFormData();
+
+  if (!data.name || !data.phone || !data.email) {
+    alert("Enter Name, Phone & Email");
+    return;
+  }
+
+  let formattedMessage = "";
+
+  for (let key in data) {
+    if (key !== "name" && key !== "phone" && key !== "email" && data[key]) {
+      formattedMessage += `${key}: ${data[key]}\n`;
+    }
+  }
+
+  const templateParams = {
+    name: data.name,
+    phone: data.phone,
+    email: data.email,
+    product: product.toUpperCase(),
+    message: formattedMessage
+  };
+
+  emailjs.send(
+  "service_0vtjhe9",   // ✅ EXACT SAME
+  "template_e9xyyrl",
+  templateParams
+)
+  .then(() => {
+    alert("✅ Email sent successfully!");
+  })
+  .catch((error) => {
+    alert("❌ Failed to send email");
+    console.error(error);
+  });
+}
+
+// ===============================
+// TITLE UPDATE
 // ===============================
 function updatePageTitle(product) {
   const titles = {
@@ -146,16 +191,21 @@ function updatePageTitle(product) {
 }
 
 // ===============================
-// INIT
+// INIT (🔥 ALL EVENTS HERE)
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
 
   const product = getProductType();
 
-  updatePageTitle(product); // ✅ now works for ALL
+  updatePageTitle(product);
   loadForm();
 
+  // WhatsApp
   document.getElementById("whatsappBtn")
     .addEventListener("click", sendToWhatsApp);
+
+  // Email (🔥 FIXED)
+  document.getElementById("emailBtn")
+    .addEventListener("click", sendEmail);
 
 });

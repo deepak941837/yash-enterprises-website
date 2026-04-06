@@ -21,12 +21,12 @@
 
   <div class="form-layout">
 
-    <!-- LEFT (PRODUCT FORM) -->
+    <!-- LEFT -->
     <div class="form-box">
       <div id="dynamicForm"></div>
     </div>
 
-    <!-- RIGHT (COMMON) -->
+    <!-- RIGHT -->
     <div class="form-box">
 
       <div class="form-group">
@@ -36,17 +36,24 @@
 
       <div class="form-group">
         <label>Name</label>
-        <input type="text" name="name">
+        <input type="text" name="name" required>
       </div>
 
       <div class="form-group">
         <label>Phone</label>
-        <input type="text" name="phone">
+        <input type="text" name="phone" required>
       </div>
 
-      <button type="button" id="whatsappBtn">
-        Get Quote on WhatsApp
-      </button>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Enter Email" required>
+      </div>
+
+      <!-- BUTTON GROUP -->
+      <div style="display:flex; gap:10px; margin-top:10px;">
+        <button id="emailBtn" class="email-btn">📧 Send Email</button>
+        <button type="button" id="whatsappBtn">WhatsApp</button>
+      </div>
 
     </div>
 
@@ -54,7 +61,15 @@
 
 </section>
 
+<div id="floating"></div>
 <div id="footer"></div>
+
+<!-- ✅ EMAILJS SCRIPT -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+  emailjs.init("KUtCndDkQSAFFal5w");
+</script>
 
 <script src="../js/main.js"></script>
 <script src="../js/sales-quotation.js"></script>
