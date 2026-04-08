@@ -2,15 +2,18 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
+const nodemailer = require("nodemailer");
+const admin = require("firebase-admin");
 
-const app = express();   // ✅ FIRST define app
+const app = express();
 
-app.use(cors());         // ✅ THEN use it
+app.use(cors());
 app.use(express.json());
+
 /* ==============================
-   FIREBASE INIT (USE YOUR EXISTING KEY)
+   FIREBASE INIT (ENV BASED)
 ============================== */
-const serviceAccount = require("./firebase-key.json");
+const serviceAccount = JSON.parse(process.env.FIREBASE_KEY);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
@@ -43,16 +46,13 @@ app.post("/contact", async (req, res) => {
 
   const { name, email, phone, message } = req.body;
 
-  // ✅ validation
   if (!name || !email || !message) {
     return res.status(400).json({ error: "Required fields missing ❌" });
   }
 
   try {
 
-    /* ==========================
-       1️⃣ SAVE TO FIREBASE
-    ========================== */
+    // 1️⃣ Save to Firebase
     await db.collection("leads").add({
       name,
       email,
@@ -61,9 +61,7 @@ app.post("/contact", async (req, res) => {
       createdAt: new Date()
     });
 
-    /* ==========================
-       2️⃣ ADMIN EMAIL
-    ========================== */
+    // 2️⃣ Admin email
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
@@ -77,11 +75,9 @@ app.post("/contact", async (req, res) => {
       `
     });
 
-    /* ==========================
-       3️⃣ AUTO REPLY
-    ========================== */
+    // 3️⃣ Auto reply
     await transporter.sendMail({
-      from: process.env.EMAIL_USER, // ✅ FIXED
+      from: process.env.EMAIL_USER,
       to: email,
       subject: "Thanks for contacting Yash Enterprises 🙏",
       html: `
