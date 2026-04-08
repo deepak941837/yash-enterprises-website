@@ -69,5 +69,26 @@
 <script src="../js/main.js"></script>
 <script type="module" src="../js/firebase.js"></script>
 
+<script>
+document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const message = document.getElementById("message").value;
+
+  await fetch("http://localhost:5000/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ name, email, phone, message })
+  });
+
+  alert("Message sent successfully ✅");
+});
+</script>
+
 </body>
 </html>
