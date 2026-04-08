@@ -1,77 +1,50 @@
-// ================= DETECT BASE PATH =================
-const isInPages = window.location.pathname.includes("/pages/");
-const basePath = isInPages ? "../" : "./";
-
-
-// ================= LOAD COMPONENT FUNCTION =================
-function loadComponent(id, file) {
-  const element = document.getElementById(id);
-
-  // Debug: check if element exists
-  if (!element) {
-    console.warn(`Element #${id} not found in HTML`);
-    return;
-  }
-
-  fetch(basePath + file)
-    .then(res => {
-      if (!res.ok) {
-        throw new Error(`Component not found: ${basePath + file}`);
-      }
-      return res.text();
-    })
-    .then(data => {
-      element.innerHTML = data;
-
-      console.log(`Loaded: ${id}`); // ✅ debug log
-
-      // Run navbar logic after loading
-      if (id === "navbar") {
-        setupNavbar();
-      }
-    })
-    .catch(err => console.error(err));
-}
-
-
-// ================= NAVBAR LOGIC =================
-function setupNavbar() {
-
-  const links = document.querySelectorAll(".nav-links a");
-  const currentPage = window.location.pathname.split("/").pop();
-
-  links.forEach(link => {
-    let href = link.getAttribute("href");
-
-    if (!href) return;
-
-    // Normalize path
-    href = href.replace("../", "");
-
-    if (currentPage === href) {
-      link.classList.add("active");
-    }
-  });
-
-  // Mobile menu toggle
-  const toggle = document.getElementById("menu-toggle");
-  const navLinks = document.getElementById("nav-links");
-
-  if (toggle && navLinks) {
-    toggle.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-    });
-  }
-}
-
-
-// ================= LOAD ALL COMPONENTS =================
 document.addEventListener("DOMContentLoaded", () => {
 
-  console.log("Main.js Loaded ✅");
+  const form = document.querySelector("form");
 
-  loadComponent("navbar", "components/navbar.html");
-  loadComponent("footer", "components/footer.html");
-  loadComponent("floating", "components/floating-contact.html");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Get form values
+    const name = document.querySelector("#name").value;
+    const email = document.querySelector("#email").value;
+    const phone = document.querySelector("#phone")?.value || "";
+    const message = document.querySelector("#message")?.value || "";
+
+    // Simple validation
+    if (!name || !email) {
+      alert("Please fill all required fields ❗");
+      return;
+    }
+
+    try {
+      // 🔥 IMPORTANT: Your Render Backend URL
+      const response = await fetch("https://yash-backend-a7dc.onrender.com/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          message
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert("✅ Email sent successfully!");
+        form.reset();
+      } else {
+        alert("❌ Failed to send email");
+      }
+
+    } catch (error) {
+      console.error("Error:", error);
+      alert("❌ Server error. Please try again later.");
+    }
+  });
 
 });

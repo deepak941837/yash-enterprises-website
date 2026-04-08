@@ -1,12 +1,12 @@
 require("dotenv").config();
 
 const express = require("express");
-const nodemailer = require("nodemailer");
-const admin = require("firebase-admin");
+const cors = require("cors");
 
-const app = express();
+const app = express();   // ✅ FIRST define app
+
+app.use(cors());         // ✅ THEN use it
 app.use(express.json());
-
 /* ==============================
    FIREBASE INIT (USE YOUR EXISTING KEY)
 ============================== */
