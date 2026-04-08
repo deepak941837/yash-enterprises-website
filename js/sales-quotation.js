@@ -160,10 +160,11 @@ function sendEmail() {
     message: formattedMessage
   };
 
-  emailjs.send(
-  "service_0vtjhe9",   // ✅ EXACT SAME
+ emailjs.send(
+  "service_0vtjhe9",
   "template_e9xyyrl",
-  templateParams
+  templateParams,
+  "KUtCndDkQSAFFal5w"   // 🔥 ADD THIS LINE
 )
   .then(() => {
     alert("✅ Email sent successfully!");
