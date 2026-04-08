@@ -4,7 +4,7 @@
   "description": "Official website for Yash Enterprises IT services, CCTV solutions, and software development",
   "main": "index.js",
   "scripts": {
-    "start": "node backend/server.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
