@@ -13,6 +13,11 @@ app.use(express.json());
 /* ==============================
    FIREBASE INIT (ENV BASED)
 ============================== */
+if (!process.env.FIREBASE_KEY) {
+  console.error("❌ FIREBASE_KEY environment variable is not set!");
+  process.exit(1);
+}
+
 const serviceAccount = JSON.parse(process.env.FIREBASE_KEY);
 
 admin.initializeApp({
