@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 /* ==============================
-   FIREBASE INIT (ENV BASED)
+   FIREBASE INIT
 ============================== */
 if (!process.env.FIREBASE_KEY) {
   console.error("❌ FIREBASE_KEY environment variable is not set!");
@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
 });
 
 /* ==============================
-   GMAIL TRANSPORTER
+   EMAIL SETUP
 ============================== */
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -48,7 +48,6 @@ const transporter = nodemailer.createTransport({
    CONTACT FORM API
 ============================== */
 app.post("/contact", async (req, res) => {
-
   const { name, email, phone, message } = req.body;
 
   if (!name || !email || !message) {
@@ -56,8 +55,7 @@ app.post("/contact", async (req, res) => {
   }
 
   try {
-
-    // 1️⃣ Save to Firebase
+    // Save to Firebase
     await db.collection("leads").add({
       name,
       email,
@@ -66,13 +64,13 @@ app.post("/contact", async (req, res) => {
       createdAt: new Date()
     });
 
-    // 2️⃣ Admin email
+    // Admin email
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
-      subject: "New Lead 🚀",
+      subject: "New Contact Lead 🚀",
       html: `
-        <h3>New Inquiry</h3>
+        <h3>New Contact Inquiry</h3>
         <p><b>Name:</b> ${name}</p>
         <p><b>Email:</b> ${email}</p>
         <p><b>Phone:</b> ${phone || "N/A"}</p>
@@ -80,7 +78,7 @@ app.post("/contact", async (req, res) => {
       `
     });
 
-    // 3️⃣ Auto reply
+    // Auto reply
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: email,
@@ -89,8 +87,6 @@ app.post("/contact", async (req, res) => {
         <h2>Hi ${name},</h2>
         <p>Thank you for contacting us.</p>
         <p>We will get back to you shortly.</p>
-        <br>
-        <b>Yash Enterprises</b>
       `
     });
 
@@ -101,6 +97,50 @@ app.post("/contact", async (req, res) => {
     res.status(500).json({ error: "Something went wrong ❌" });
   }
 });
+
+
+/* ==============================
+   SERVICE QUOTATION API (🔥 NEW)
+============================== */
+app.post("/service-quotation", async (req, res) => {
+  try {
+    const data = req.body;
+
+    if (!data.name || !data.phone) {
+      return res.status(400).json({ error: "Name & Phone required ❌" });
+    }
+
+    // Save to Firebase
+    await db.collection("service_quotations").add({
+      ...data,
+      createdAt: new Date()
+    });
+
+    // Admin email
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_USER,
+      subject: "New Service Quotation 🔧",
+      html: `
+        <h3>New Service Quote Request</h3>
+        <p><b>Name:</b> ${data.name}</p>
+        <p><b>Phone:</b> ${data.phone}</p>
+        <p><b>Service:</b> ${data.serviceType || "N/A"}</p>
+        <p><b>Location:</b> ${data.location || "N/A"}</p>
+        <p><b>Cameras:</b> ${data.cameras || "N/A"}</p>
+        <p><b>Coverage:</b> ${data.coverage || "N/A"}</p>
+        <p><b>Description:</b> ${data.description || "N/A"}</p>
+      `
+    });
+
+    res.json({ success: true });
+
+  } catch (error) {
+    console.error("Quotation Error:", error);
+    res.status(500).json({ error: "Something went wrong ❌" });
+  }
+});
+
 
 /* ==============================
    SERVER START

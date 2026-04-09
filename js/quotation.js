@@ -1,47 +1,70 @@
-document.getElementById("quotationForm").addEventListener("submit", function(e) {
+// ===============================
+// FORM SUBMIT (🔥 UPDATED)
+// ===============================
+document.getElementById("quotationForm").addEventListener("submit", async function(e) {
   e.preventDefault();
 
-  const name = document.querySelector("[name='name']").value;
-  const phone = document.querySelector("[name='phone']").value;
-  const service = document.querySelector("[name='serviceType']").value;
-  const location = document.querySelector("[name='location']").value;
-  const cameras = document.querySelector("[name='cameras']").value;
-  const coverage = document.querySelector("[name='coverage']").value;
+  const data = {
+    name: document.querySelector("[name='name']").value,
+    phone: document.querySelector("[name='phone']").value,
+    serviceType: document.querySelector("[name='serviceType']")?.value,
+    location: document.querySelector("[name='location']")?.value,
+    cameras: document.querySelector("[name='cameras']")?.value,
+    coverage: document.querySelector("[name='coverage']")?.value,
+    description: document.querySelector("[name='description']").value
+  };
 
-  // Features (multiple)
-  const features = Array.from(document.querySelectorAll("input[name='features[]']:checked"))
-    .map(el => el.value)
-    .join(", ");
+  // Basic validation
+  if (!data.name || !data.phone) {
+    alert("Please enter Name and Phone ❌");
+    return;
+  }
 
-  const description = document.querySelector("[name='description']").value;
+  try {
+    // ✅ 1. Send data to backend (Firebase save)
+    await fetch("https://yash-backend-a7dc.onrender.com/service-quotation", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
 
-  // 📲 WhatsApp Message
-  const message = `📌 New CCTV Inquiry
+    // ✅ 2. Success message
+    alert("Quotation request submitted successfully ✅");
 
-👤 Name: ${name}
-📞 Phone: ${phone}
+    // ✅ 3. WhatsApp message
+    const message = `📌 New Inquiry
 
-🔧 Service: ${service}
-📍 Location: ${location}
-📷 Cameras: ${cameras}
-🏠 Coverage: ${coverage}
+👤 Name: ${data.name}
+📞 Phone: ${data.phone}
 
-✨ Features: ${features || "Not specified"}
+🔧 Service: ${data.serviceType || "N/A"}
+📍 Location: ${data.location || "N/A"}
+📷 Cameras: ${data.cameras || "N/A"}
+🏠 Coverage: ${data.coverage || "N/A"}
 
 📝 Details:
-${description}`;
+${data.description || "N/A"}`;
 
-  const whatsappNumber = "919308907319"; // 👈 your number
+    const whatsappNumber = "919308907319";
 
-  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-  window.open(url, "_blank");
+    window.open(url, "_blank");
+
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Something went wrong ❌");
+  }
 });
 
+
+// ===============================
+// DYNAMIC SERVICE LOGIC (UNCHANGED)
+// ===============================
 const params = new URLSearchParams(window.location.search);
 const service = params.get("service");
-
-console.log(service); // test
 
 // Change title dynamically
 const title = document.querySelector("h1");
@@ -65,6 +88,7 @@ else if (service === "maintenance") {
   title.innerText = "Get Website & App Maintenance Quote";
 }
 
+// Sections
 const cctv = document.getElementById("cctvFields");
 const biometric = document.getElementById("biometricFields");
 const fire = document.getElementById("fireFields");
