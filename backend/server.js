@@ -106,31 +106,37 @@ app.post("/service-quotation", async (req, res) => {
   try {
     const data = req.body;
 
+    // ✅ Save to Firebase FIRST
     await db.collection("service_quotations").add({
       ...data,
       createdAt: new Date()
     });
 
-    // ✅ EMAIL SEND
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
-      subject: "New Quotation Request 📩",
-      html: `
-        <h3>New Quotation</h3>
-        <p><b>Name:</b> ${data.name}</p>
-        <p><b>Phone:</b> ${data.phone}</p>
-        <p><b>Service:</b> ${data.serviceType}</p>
-        <p><b>Location:</b> ${data.location}</p>
-        <p><b>Description:</b> ${data.description}</p>
-      `
-    });
+    // ✅ Email (optional - fail safe)
+    try {
+      await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_USER,
+        subject: "New Quotation Request 📩",
+        html: `
+          <h3>New Quotation</h3>
+          <p><b>Name:</b> ${data.name}</p>
+          <p><b>Phone:</b> ${data.phone}</p>
+          <p><b>Service:</b> ${data.serviceType}</p>
+          <p><b>Location:</b> ${data.location}</p>
+          <p><b>Description:</b> ${data.description}</p>
+        `
+      });
+    } catch (emailError) {
+      console.error("Email failed but continuing:", emailError);
+    }
 
+    // ✅ ALWAYS success
     res.json({ success: true });
 
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Error ❌" });
+    console.error("API Error:", error);
+    res.status(500).json({ error: "Server error ❌" });
   }
 });
 
