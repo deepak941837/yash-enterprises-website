@@ -14,14 +14,10 @@ document.getElementById("quotationForm").addEventListener("submit", async functi
     description: document.querySelector("[name='description']").value
   };
 
-  // Basic validation
-  if (!data.name || !data.phone) {
-    alert("Please enter Name and Phone ❌");
-    return;
-  }
+  console.log("Sending data:", data); // debug
 
   try {
-    // ✅ 1. Send data to backend (Firebase save)
+    // ✅ IMPORTANT: Backend call
     await fetch("https://yash-backend-a7dc.onrender.com/service-quotation", {
       method: "POST",
       headers: {
@@ -30,32 +26,18 @@ document.getElementById("quotationForm").addEventListener("submit", async functi
       body: JSON.stringify(data)
     });
 
-    // ✅ 2. Success message
-    alert("Quotation request submitted successfully ✅");
+    alert("Quotation submitted ✅");
 
-    // ✅ 3. WhatsApp message
-    const message = `📌 New Inquiry
+    // ✅ WhatsApp (keep it)
+    const message = `New Inquiry
+Name: ${data.name}
+Phone: ${data.phone}`;
 
-👤 Name: ${data.name}
-📞 Phone: ${data.phone}
-
-🔧 Service: ${data.serviceType || "N/A"}
-📍 Location: ${data.location || "N/A"}
-📷 Cameras: ${data.cameras || "N/A"}
-🏠 Coverage: ${data.coverage || "N/A"}
-
-📝 Details:
-${data.description || "N/A"}`;
-
-    const whatsappNumber = "919308907319";
-
-    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-    window.open(url, "_blank");
+    window.open(`https://wa.me/919308907319?text=${encodeURIComponent(message)}`, "_blank");
 
   } catch (error) {
-    console.error("Error:", error);
-    alert("Something went wrong ❌");
+    console.error(error);
+    alert("Error ❌");
   }
 });
 
