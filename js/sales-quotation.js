@@ -132,7 +132,7 @@ async function handleSubmit(e) {
     // =========================
     // 1️⃣ FIREBASE (BACKEND)
     // =========================
-    fetch("https://yash-backend-a7dc.onrender.com/service-quotation", {
+fetch("https://yash-backend-a7dc.onrender.com/sales-quotation", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

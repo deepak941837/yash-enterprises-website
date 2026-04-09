@@ -112,6 +112,22 @@ app.post("/service-quotation", async (req, res) => {
       createdAt: new Date()
     });
 
+    app.post("/sales-quotation", async (req, res) => {
+  try {
+    const data = req.body;
+
+    await db.collection("sales_quotation").add({
+      ...data,
+      createdAt: new Date()
+    });
+
+    res.status(200).send("Sales quotation saved successfully");
+  } catch (error) {
+    console.error("Error saving sales quotation:", error);
+    res.status(500).send("Error saving sales quotation");
+  }
+});
+
     // ✅ Email (optional - fail safe)
     try {
       await transporter.sendMail({
