@@ -1,6 +1,4 @@
-// ===============================
 // FORM SUBMIT (🔥 UPDATED)
-// ===============================
 document.getElementById("quotationForm").addEventListener("submit", async function(e) {
   e.preventDefault();
 
@@ -14,10 +12,13 @@ document.getElementById("quotationForm").addEventListener("submit", async functi
     description: document.querySelector("[name='description']").value
   };
 
-  console.log("Sending data:", data); // debug
+  if (!data.name || !data.phone) {
+    alert("Enter Name & Phone ❌");
+    return;
+  }
 
   try {
-    // ✅ IMPORTANT: Backend call
+    // ✅ 1. Save to backend
     await fetch("https://yash-backend-a7dc.onrender.com/service-quotation", {
       method: "POST",
       headers: {
@@ -26,21 +27,30 @@ document.getElementById("quotationForm").addEventListener("submit", async functi
       body: JSON.stringify(data)
     });
 
-    alert("Quotation submitted ✅");
+    // ✅ 2. Success message
+    alert("Quotation submitted successfully ✅");
 
-    // ✅ WhatsApp (keep it)
-    const message = `New Inquiry
-Name: ${data.name}
-Phone: ${data.phone}`;
+    // ✅ 3. WhatsApp
+    const message = `📌 New Inquiry
 
-    window.open(`https://wa.me/919308907319?text=${encodeURIComponent(message)}`, "_blank");
+👤 Name: ${data.name}
+📞 Phone: ${data.phone}
+
+🔧 Service: ${data.serviceType || "N/A"}
+📍 Location: ${data.location || "N/A"}
+
+📝 Details:
+${data.description || "N/A"}`;
+
+    const url = `https://wa.me/919308907319?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
 
   } catch (error) {
     console.error(error);
-    alert("Error ❌");
+    alert("Something went wrong ❌");
   }
 });
-
 
 // ===============================
 // DYNAMIC SERVICE LOGIC (UNCHANGED)

@@ -106,41 +106,33 @@ app.post("/service-quotation", async (req, res) => {
   try {
     const data = req.body;
 
-    if (!data.name || !data.phone) {
-      return res.status(400).json({ error: "Name & Phone required ❌" });
-    }
-
-    // Save to Firebase
     await db.collection("service_quotations").add({
       ...data,
       createdAt: new Date()
     });
 
-    // Admin email
+    // ✅ EMAIL SEND
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
-      subject: "New Service Quotation 🔧",
+      subject: "New Quotation Request 📩",
       html: `
-        <h3>New Service Quote Request</h3>
+        <h3>New Quotation</h3>
         <p><b>Name:</b> ${data.name}</p>
         <p><b>Phone:</b> ${data.phone}</p>
-        <p><b>Service:</b> ${data.serviceType || "N/A"}</p>
-        <p><b>Location:</b> ${data.location || "N/A"}</p>
-        <p><b>Cameras:</b> ${data.cameras || "N/A"}</p>
-        <p><b>Coverage:</b> ${data.coverage || "N/A"}</p>
-        <p><b>Description:</b> ${data.description || "N/A"}</p>
+        <p><b>Service:</b> ${data.serviceType}</p>
+        <p><b>Location:</b> ${data.location}</p>
+        <p><b>Description:</b> ${data.description}</p>
       `
     });
 
     res.json({ success: true });
 
   } catch (error) {
-    console.error("Quotation Error:", error);
-    res.status(500).json({ error: "Something went wrong ❌" });
+    console.error(error);
+    res.status(500).json({ error: "Error ❌" });
   }
 });
-
 
 /* ==============================
    SERVER START
