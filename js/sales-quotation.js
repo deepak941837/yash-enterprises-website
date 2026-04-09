@@ -132,13 +132,21 @@ async function handleSubmit(e) {
     // =========================
     // 1️⃣ FIREBASE (BACKEND)
     // =========================
-fetch("https://yash-backend-a7dc.onrender.com/sales-quotation", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ ...data, product })
-    });
+try {
+  const res = await fetch("https://yash-backend-a7dc.onrender.com/sales-quotation", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ ...data, product })
+  });
+
+  const result = await res.text();
+  console.log("Server response:", result);
+
+} catch (err) {
+  console.error("Fetch error:", err);
+}
 
     // =========================
     // 2️⃣ EMAILJS
