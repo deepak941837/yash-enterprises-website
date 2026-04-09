@@ -12,31 +12,29 @@ body {
 .hero {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 80px 60px;
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: white;
-    min-height: 90vh;
+    min-height: 60vh;
 }
 
 .hero-content {
-    max-width: 50%;
+    display: flex;
+    flex-direction: column;
 }
 
 .hero-content h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
+    order: 1;
 }
 
 .hero-content p {
-    font-size: 18px;
-    margin-bottom: 30px;
-    line-height: 1.6;
+    order: 2;
 }
 
 .hero-buttons {
-    display: flex;
-    gap: 15px;
+    order: 3;
+    margin-top: 10px;
 }
 
 .btn {
@@ -62,11 +60,18 @@ body {
     color: white;
 }
 
+.hero-image {
+    position: relative;
+    margin-left: 150px;
+    top: 0px; /* increase value to move more up */
+}
+
 .hero-image img {
-    width: 350px;
-    height: 350px;
+    width: 450px;
+    height: 450px;
     object-fit: cover;
     border-radius: 50%;
+    object-position: center;
 }
 
 /* HERO MOBILE */
