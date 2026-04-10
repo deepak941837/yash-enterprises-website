@@ -14,7 +14,7 @@ body {
     align-items: center;
     justify-content: space-around;
     padding: 80px 60px;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    background: radial-gradient(circle at right, #1e3c72, #0f2027);
     color: white;
     min-height: 60vh;
 }
@@ -110,7 +110,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #0f2027;
+    background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
     padding: 15px 30px;
 }
 
@@ -250,7 +250,9 @@ body {
     transition: 0.3s;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
-
+.service-card {
+    cursor: pointer;
+}
 .service-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
@@ -261,7 +263,11 @@ body {
     color: #0f2027;
     margin-bottom: 15px;
 }
-
+.service-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
 /* RESPONSIVE GRID */
 @media (max-width: 992px) {
     .services-container {
