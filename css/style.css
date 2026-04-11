@@ -51,14 +51,26 @@ body {
     transform: translateY(-2px);
 }
 
-.primary {
-    background: #ff7a18;
-    color: white;
+.btn-primary {
+    background: white;
+    color: #11bd42;
+    border: 2px solid #ba1919;
 }
 
-.secondary {
-    border: 2px solid white;
-    color: white;
+.btn-primary:hover {
+    background: #1d0cb8;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background:  white;
+    color: rgba(18, 12, 137, 0.816);
+    border: 2px solid #0cca35;
+}
+
+.btn-outline:hover {
+    background:  #c50d0d;
+    transform: translateY(-2px);
 }
 
 .hero-image {
