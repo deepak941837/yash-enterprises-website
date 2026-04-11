@@ -67,3 +67,4 @@ loadComponent("footer", "footer.html");
 loadComponent("floating", "floating-contact.html");
 
 });
+
