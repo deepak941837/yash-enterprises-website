@@ -3,18 +3,21 @@
     position: fixed;
     bottom: 20px;
     right: 80px;
-    background: #2f6f7e;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
     width: 55px;
     height: 55px;
-    font-size: 22px;
+    border-radius: 50%;
+    background: #2f6f7e;
+    border: none;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    z-index: 999;
+    overflow: hidden;
 }
 
+/* IMAGE INSIDE BUTTON */
+.chat-toggle img {
+    width: 100%;
+    height: 100%;
+   object-fit: contain;
+}
 /* ================= CHATBOX ================= */
 .chatbot-container {
     position: fixed;
@@ -106,4 +109,20 @@
     border: none;
     padding: 8px 12px;
     cursor: pointer;
+}
+
+/* HEADER FLEX */
+.chat-header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* AVATAR */
+.chat-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
 }
