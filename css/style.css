@@ -583,3 +583,88 @@ html {
 .page-transition.show {
     opacity: 1;
 }
+
+/* ================= GLOBAL MOBILE FIX ================= */
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 100%;
+    padding: 0 15px;
+}
+
+/* MOBILE NAV */
+@media (max-width: 768px) {
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #1f4e5f;
+        width: 100%;
+        flex-direction: column;
+        display: none;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    #menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+}/* MOBILE CARDS */
+@media (max-width: 768px) {
+
+    .commerce-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .commerce-card {
+        padding: 25px 15px;
+    }
+
+    .commerce-card h2 {
+        font-size: 22px;
+    }
+}/* MOBILE PRODUCT GRID */
+@media (max-width: 768px) {
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card {
+        padding: 15px;
+    }
+
+    .product-actions {
+        flex-direction: column;
+    }
+
+    .cart-btn, .buy-btn {
+        width: 100%;
+    }
+}/* MOBILE CHATBOT */
+@media (max-width: 768px) {
+
+    .chatbot-container {
+        width: 90%;
+        right: 5%;
+        bottom: 80px;
+    }
+
+    .chat-toggle {
+        right: 20px;
+        bottom: 20px;
+    }
+}
