@@ -19,8 +19,14 @@ function loadComponent(id, file) {
 
       console.log(`Loaded: ${id}`);
 
+      // NAVBAR INIT
       if (id === "navbar") {
         setupNavbar();
+      }
+
+      // ✅ CHATBOT INIT (FIX ADDED)
+      if (id === "chatbot") {
+        initChatbot();
       }
     })
     .catch(err => console.error(err));
@@ -56,6 +62,68 @@ function setupNavbar() {
   }
 }
 
+// ================= CHATBOT LOGIC =================
+function initChatbot() {
+  const chatToggle = document.getElementById("chat-toggle");
+  const chatBox = document.querySelector(".chatbot-container");
+  const chatClose = document.getElementById("chat-close");
+
+  if (!chatToggle || !chatBox) return;
+
+  chatToggle.onclick = () => {
+    chatBox.style.display = "flex";
+  };
+
+  chatClose.onclick = () => {
+    chatBox.style.display = "none";
+  };
+
+  const sendBtn = document.getElementById("chat-send");
+  const input = document.getElementById("chat-input");
+  const chatBody = document.getElementById("chat-body");
+
+  sendBtn.onclick = () => {
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    // USER MESSAGE
+    const userDiv = document.createElement("div");
+    userDiv.className = "user-msg";
+    userDiv.innerText = msg;
+    chatBody.appendChild(userDiv);
+
+    // BOT MESSAGE
+    const botDiv = document.createElement("div");
+    botDiv.className = "bot-msg";
+    botDiv.innerText = "We will help you shortly.";
+    setTimeout(() => chatBody.appendChild(botDiv), 500);
+
+    input.value = "";
+    chatBody.scrollTop = chatBody.scrollHeight;
+  };
+}
+
+// ================= CARD TILT EFFECT =================
+function initCardTilt() {
+  const cards = document.querySelectorAll(".commerce-card");
+
+  cards.forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const rotateX = -(y - rect.height / 2) / 15;
+      const rotateY = (x - rect.width / 2) / 15;
+
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "rotateX(0) rotateY(0) scale(1)";
+    });
+  });
+}
 
 // ================= LOAD ALL COMPONENTS =================
 document.addEventListener("DOMContentLoaded", () => {
@@ -63,8 +131,12 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Main.js Loaded ✅");
 
   loadComponent("navbar", "navbar.html");
-loadComponent("footer", "footer.html");
-loadComponent("floating", "floating-contact.html");
+  loadComponent("footer", "footer.html");
+  loadComponent("floating", "floating-contact.html");
 
+  // ✅ CHATBOT LOAD (FIX ADDED)
+  loadComponent("chatbot", "chatbot.html");
+
+  // ✅ INIT CARD EFFECT AFTER LOAD
+  initCardTilt();
 });
-

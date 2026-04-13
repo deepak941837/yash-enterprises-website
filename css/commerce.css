@@ -1,79 +1,157 @@
 /* ================= COMMERCE HERO ================= */
 .commerce-hero {
-    background: linear-gradient(rgba(15,32,39,0.9), rgba(44,83,100,0.9));
+    background: linear-gradient(rgba(23, 82, 107, 0.9), rgba(44,83,100,0.9));
     color: #fff;
     text-align: center;
-    padding: 80px 20px;
+    padding: 30px 10px;
 }
 
 /* ================= COMMERCE SECTION ================= */
 .commerce-section {
-    padding: 60px 20px;
-    background: #f4f7f7;
+    padding: 80px 20px 60px;
+    text-align: center;
+    background: white;
+    color: black; /* fixed contrast */
 }
 
-/* GRID */
+.commerce-section h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.commerce-section p {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* ================= GRID ================= */
 .commerce-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
+    max-width: 1100px;
+    margin: auto;
 }
 
-/* CARD */
+/* ================= CARD ================= */
+/* ================= GLASS CARDS ================= */
 .commerce-card {
-    background: #fff;
-    padding: 40px 25px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: 0.3s;
+    background: rgb(17, 128, 158); /* slightly clearer */
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border: 1px solid rgba(255,255,255,0.3); /* stronger border */
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+    color: #fff;
+    padding: 50px 40px;   /* bigger inner space */
+    border-radius: 18px;
+    min-height: 220px;    /* increase height */
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
 }
 
 .commerce-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
 }
 
+/* ================= ICON ANIMATION ================= */
 .commerce-card i {
-    font-size: 40px;
-    color: #0f2027;
+    font-size: 42px;
     margin-bottom: 15px;
+    transition: all 0.4s ease;
+    color: #00e0ff; /* glowing accent */
 }
 
-/* PRIORITY CARD */
+.commerce-card:hover i {
+    transform: rotate(10deg) scale(1.2);
+    color: #00e0ff;
+}
+.commerce-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.25), transparent);
+    opacity: 0;
+    transition: 0.4s;
+}
+.commerce-card:hover::after {
+    opacity: 1;
+}
+.commerce-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.commerce-card:hover::before {
+    opacity: 1;
+}
+.card-link {
+    text-decoration: none;   /* REMOVE underline */
+    color: inherit;          /* keep original colors */
+}
+.card-link:hover {
+    text-decoration: none;
+}
+/* ================= BUTTON BASE (SAME LOOK) ================= */
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 22px;
+    border-radius: 35px;
+    border: 2px solid rgba(146, 12, 12, 0.7);
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
+
+    /* SAME STYLE */
+    border: 2px solid white;
+    color: black;
+    background: transparent;
+
+    transition: all 0.3s ease;
+    pointer-events: none; /* so full card clickable */
+}
+
+/* ================= SERVICES BUTTON (FILL HOVER) ================= */
+.btn-outline:hover {
+    background: #2f6f7e;
+    color: #fff;
+}
+
+/* ================= SALES BUTTON (LIFT + GLOW) ================= */
+.btn-primary:hover {
+    background: #091493;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(47,111,126,0.4);
+}
+
+/* ================= SMALL MICRO-INTERACTION ================= */
+.btn:hover {
+    letter-spacing: 0.5px;
+}
+
+/* ================= HIGHLIGHT CARD ================= */
 .highlight {
     border: 2px solid #6fa3a3;
 }
 
-/* BUTTON */
-.commerce-btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: #0f2027;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 25px;
-    transition: 0.3s;
+/* ================= LINK BUTTON FIX ================= */
+a.btn {
+    text-align: center;
 }
 
-.commerce-btn:hover {
-    background: #6fa3a3;
-}
-
-/* SECONDARY BUTTON */
-.secondary-btn {
-    background: transparent;
-    border: 2px solid #0f2027;
-    color: #0f2027;
-}
-
-.secondary-btn:hover {
-    background: #0f2027;
-    color: #fff;
-}
-
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
     .commerce-grid {
         grid-template-columns: 1fr;

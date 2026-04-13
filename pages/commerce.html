@@ -10,6 +10,7 @@
 
     <!-- PAGE SPECIFIC CSS -->
     <link rel="stylesheet" href="../css/commerce.css">
+    <link rel="stylesheet" href="../css/chatbot.css">
 
     <!-- ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -33,31 +34,28 @@
 
         <div class="container commerce-grid">
 
-            <!-- SERVICES (PRIORITY) -->
-            <div class="commerce-card highlight">
-                <i class="fa-solid fa-screwdriver-wrench"></i>
-                <h2>Services</h2>
-                <p>
-                    Our primary focus is delivering high-quality IT and technical services
-                    that ensure reliability, performance, and long-term value.
-                </p>
-               <a href="/pages/explore-services.html"  class="commerce-btn">Explore Services</a>
-            </div>
+ <a href="/pages/explore-services.html" class="card-link">
+    <div class="commerce-card highlight fade-in">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+        <h2>Services</h2>
+        <p>Our primary focus is delivering high-quality IT and technical services...</p>
+        <span class="btn btn-outline">Explore Services</span>
+    </div>
+</a>
 
-            <!-- SALES -->
-            <div class="commerce-card">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <h2>Sales</h2>
-                <p>
-                    We provide essential products and solutions to support your business
-                    operations and infrastructure needs.
-                </p>
-                <a href="/pages/sales.html" class="commerce-btn secondary-btn">View Products</a>
-            </div>
-
+<a href="/pages/sales.html" class="card-link">
+    <div class="commerce-card fade-in">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <h2>Sales</h2>
+        <p>We provide essential products and solutions...</p>
+        <span class="btn btn-primary">View Products</span>
+    </div>
+</a>
         </div>
 
     </section>
+    
+<div id="chatbot"></div>
 
     <!-- Floating Contact -->
     <div id="floating"></div>
