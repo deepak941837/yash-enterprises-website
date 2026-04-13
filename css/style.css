@@ -562,3 +562,24 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* ================= PAGE TRANSITION ================= */
+.page-transition {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #1f4e5f, #3a7d8c);
+    z-index: 9999;
+    opacity: 1;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+}
+
+/* when page loaded */
+.page-transition.hide {
+    opacity: 0;
+}
+
+/* fade out before navigation */
+.page-transition.show {
+    opacity: 1;
+}

@@ -140,3 +140,30 @@ document.addEventListener("DOMContentLoaded", () => {
   // ✅ INIT CARD EFFECT AFTER LOAD
   initCardTilt();
 });
+
+// ================= PAGE TRANSITION =================
+window.addEventListener("load", () => {
+    const overlay = document.querySelector(".page-transition");
+    if (overlay) {
+        overlay.classList.add("hide");
+    }
+});
+
+// intercept link clicks
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
+
+        if (!href || href.startsWith("#")) return;
+
+        e.preventDefault();
+
+        const overlay = document.querySelector(".page-transition");
+        overlay.classList.remove("hide");
+        overlay.classList.add("show");
+
+        setTimeout(() => {
+            window.location.href = href;
+        }, 400);
+    });
+});
