@@ -1,0 +1,292 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #1F2937;
+  background: #f9fafb;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ===== HEADER ===== */
+.header {
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.logo span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1E7F43;
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-item > a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+}
+
+.nav-item:hover > a {
+  color: #1E7F43;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: #fff;
+  min-width: 200px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.12);
+  display: none;
+}
+
+.nav-item:hover .dropdown {
+  display: block;
+}
+
+.dropdown a {
+  display: block;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #374151;
+  text-decoration: none;
+}
+
+.dropdown a:hover {
+  background: #EAF6EF;
+  color: #1E7F43;
+}
+
+/* PROFILE */
+.profile-menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-pic {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.profile-dropdown {
+  position: absolute;
+  right: 0;
+  top: 120%;
+  background: #fff;
+  width: 260px;
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0,0,0,.15);
+  display: none;
+}
+
+.profile-menu.active .profile-dropdown {
+  display: block;
+}
+
+/* ===== LOCAL EXPERT PAGE ===== */
+
+/* HERO */
+.le-hero {
+  background: linear-gradient(135deg, #1E7F43, #16a34a);
+  color: #fff;
+  padding: 40px 0;
+}
+
+.le-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 16px;
+}
+
+.le-hero-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.le-hero h1 {
+  font-size: 32px;
+}
+
+.le-hero p {
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.le-hero-tag {
+  font-size: 13px;
+  background: rgba(255,255,255,0.2);
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+
+/* MAIN */
+.le-main {
+  padding: 30px 0;
+}
+
+/* TOP BAR */
+.le-top-bar {
+  margin-bottom: 10px;
+}
+
+.le-top-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* FILTERS */
+.le-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.le-input {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #D1D5DB;
+  font-size: 13px;
+}
+
+.le-btn-primary {
+  background: #1E7F43;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* LIST */
+.le-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 14px;
+}
+
+/* CARD */
+.le-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 20px rgba(0,0,0,.05);
+}
+
+/* HEADER */
+.le-card-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.le-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.le-name {
+  font-weight: 600;
+}
+
+.le-expertise {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* DETAILS */
+.le-detail-line {
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+/* CONTACT */
+.le-contact-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.le-call-btn {
+  background: #1E7F43;
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 50%;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: #0F172A;
+  color: #CBD5E1;
+  padding: 50px 0 20px;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-col {
+  min-width: 160px;
+}
+
+.footer a {
+  color: #CBD5E1;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+}
